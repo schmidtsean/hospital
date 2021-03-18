@@ -20,7 +20,7 @@ const AppointmentNew = ({ doctor, appointment, patients }) => {
          <option value="eight">8:00 AM</option>
           <option value="nine">9:00 AM</option>
           
-        </select><button type="submit">Submit</button>
+        </select>
         <br />
         <label for="patient_id">Choose a patient:</label>
         <select class="browser-default"
