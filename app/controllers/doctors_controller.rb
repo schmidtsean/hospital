@@ -1,5 +1,5 @@
 class DoctorsController < ApplicationController
-  before_action :set_doctor, only: [:show, :destroy]
+  before_action :set_doctor, only: [:show, :destroy, :edit, :update ]
 
   def index
     @doctors = Doctor.all
@@ -22,6 +22,18 @@ class DoctorsController < ApplicationController
       redirect_to @doctor
     else
       render :new
+    end
+  end
+  
+  def edit
+    render component: "DoctorEdit", props: { doctor: @doctor }
+  end
+  
+  def update
+    if @doctor.update(doctor_params)
+      redirect_to @doctor
+    else
+      render component: "DoctorEdit", props: { doctor: @doctor }
     end
   end
 

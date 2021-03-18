@@ -1,5 +1,5 @@
 import React from 'react';
-const Appointments = ({ doctor, dates, times, patients}) =>{
+const Appointments = ({ doctor, eights, nines, patients}) =>{
 
     const displayPatient = (id) => {
         let fullName
@@ -17,20 +17,22 @@ const Appointments = ({ doctor, dates, times, patients}) =>{
       <a href={`/doctors/${doctor.id}/appointments/new`}>Add Appointment</a>
       <br />
      
-      <h3>Date</h3>
-      { dates.map( (date) => (
+      <h4>8:00 AM</h4>
+      <p>{eights.length <= 0 ? "No Appointments" : ""}</p>
+      { eights.map( (eight) => (
         <div>
-          <p>{displayPatient(date.patient_id)}</p>
-          <a href={`/doctors/${doctor.id}/appointments/${date.id}`} data-method="delete">
+          <h5>{displayPatient(eight.patient_id)}</h5>
+          <a href={`/doctors/${doctor.id}/appointments/${eight.id}`}  data-method="delete">
             delete
           </a>
         </div>
       ))}
-      <h3>Time</h3>
-      { times.map( (tim) => (
+      <h4>9:00 AM</h4>
+      <p>{nines.length <= 0 ? "No Appointments" : ""}</p>
+      { nines.map( (nine) => (
         <div>
-          <p>{displayPatient(tim.patient_id)}</p>
-          <a href={`/doctors/${doctor.id}/appointments/${tim.id}`} data-method="delete">
+          <h5>{displayPatient(nine.patient_id)}</h5>
+          <a href={`/doctors/${doctor.id}/appointments/${nine.id}`}  data-method="delete">
             delete
           </a>
         </div>

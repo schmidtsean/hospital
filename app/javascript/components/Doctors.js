@@ -2,7 +2,7 @@ import React from "react";
 
 const Doctors = ({ doctors }) => {
   return (
-    <>
+    <div className="textMove">
       <h1>Doctors</h1>
       <a href="/doctors/new">Add Doctor</a>
       <br />
@@ -12,7 +12,7 @@ const Doctors = ({ doctors }) => {
           <a href={`/doctors/${doctor.id}`}>{doctor.name}</a>
         </div>
       ))}
-    </>
+    </div>
   )
 }
 

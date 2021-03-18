@@ -4,21 +4,23 @@ const AppointmentNew = ({ doctor, appointment, patients }) => {
   const { role, errors, patient_id } = appointment;
   const defaultRole = role ? role : "";
   const defaultPatient = patient_id ? patient_id : "";
+  // const defaultTime = time_id ? time
   return(
-    <>
+    <div className="textMove">
       <h1>Add Appointment</h1>
       { errors && errors }
       <form action={`/doctors/${doctor.id}/appointments`} method="post">
-        <label for="role">Choose a role:</label>
+     
+        <label for="role">Choose a time:</label>
         <select 
           name="appointment[role]" 
           id="role" 
           defaultValue={defaultRole}
         >
+         <option value="eight">8:00 AM</option>
+          <option value="nine">9:00 AM</option>
           
-          <option value="date">Date</option>
-          <option value="time">Time</option>
-        </select>
+        </select><button type="submit">Submit</button>
         <br />
         <label for="patient_id">Choose a patient:</label>
         <select 
@@ -34,7 +36,7 @@ const AppointmentNew = ({ doctor, appointment, patients }) => {
         </select>
         <button type="submit">Submit</button>
       </form>
-    </>
+    </div>
   )
 }
 

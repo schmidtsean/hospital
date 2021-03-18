@@ -5,7 +5,7 @@ const PatientNew = ({ patient }) => {
   const defaultFirstName = first_name ? first_name : "";
   const defaultLastName = last_name ? last_name : "";
   return (
-  <>
+  <div className="textMove">
     <h1>Add Patient</h1>
     { errors && errors }
     <form action="/patients" method="post">
@@ -23,7 +23,7 @@ const PatientNew = ({ patient }) => {
       />
       <button type="submit">Add</button>
     </form>
-    </>
+    </div>
   );
 }
 

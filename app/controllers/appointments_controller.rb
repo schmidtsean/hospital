@@ -2,27 +2,29 @@ class AppointmentsController < ApplicationController
     before_action :set_doctor
   
     def index
-      @dates = @doctor.appointments.where(role: 'date')
-      @times = @doctor.appointments.where(role: 'time')
+    @eights = @doctor.appointments.where(role: 'eight')
+    @nines = @doctor.appointments.where(role: 'nine')
+    
       render component: "Appointments", props: { 
-        doctor: @doctor, dates: @dates, times: @times, patients: Patient.all
+        doctor: @doctor, eights: @eights, nines: @nines, patients: Patient.all
       }
     end
   
     def new
       @appointment = @doctor.appointments.new
+      @patients = Patient.all - @doctor.patients
       render component: "AppointmentNew", props: { doctor: @doctor, appointment: @appointment, patients: @patients}
     end
   
     def create
       @appointment = @doctor.appointments.new(appointment_params)
-      if @appointment.save
-        redirect_to doctor_appointment_path(@doctor)
-      else
-        @patient = Patient.all - @doctor.patients
-      render component: "AppointmentNew", props: { doctor: @doctor, appointment: @appointment, patients: @patients }
-      end
+    if @appointment.save
+      redirect_to doctor_appointments_path(@doctor)
+    else
+      @patients = Patinet.all - @doctor.patients
+      render component: "DoctorNew", props: { doctor: @doctor, appointment: @appointment, patients: @patients }
     end
+  end
   
     def destroy
       @appointment = @doctor.appointments.find(params[:id])

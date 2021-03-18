@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :update, :destroy]
+  before_action :set_patient, only: [:show, :update, :destroy, :edit ]
 
   def index
     @patients = Patient.all
@@ -7,8 +7,7 @@ class PatientsController < ApplicationController
   end
 
   def show
-    @patient = Patient.find(params[:id])
-    render component: "Patient", props: { patient: @patient, doctors: @patient.doctors}
+    render component: "Patient", props: { patient: @patient, doctors: @doctors}
   end
 
   def new
@@ -22,13 +21,25 @@ class PatientsController < ApplicationController
     if @patient.save
       redirect_to @patient
     else
-      render component: "PatientNew", props: {pateint: @patient}
+      render component: "PatientNew", props: {patient: @patient}
+    end
+  end
+
+  def edit
+    render component: "PatientEdit", props: { patient: @patient }
+  end
+  
+  def update
+    if @patient.update(patient_params)
+      redirect_to @patient
+    else
+      render component: "PatientEdit", props: { patient: @patient }
     end
   end
 
   def destroy
     @patient.destroy
-    redirect_to patient_path
+    redirect_to patients_path
   end
 
   private
