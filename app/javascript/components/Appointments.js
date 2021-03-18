@@ -19,20 +19,20 @@ const Appointments = ({ doctor, eights, nines, patients}) =>{
      
       <h4>8:00 AM</h4>
       <p>{eights.length <= 0 ? "No Appointments" : ""}</p>
-      { eights.map( (eight) => (
+      { eights.map( (e) => (
         <div>
-          <h5>{displayPatient(eight.patient_id)}</h5>
-          <a href={`/doctors/${doctor.id}/appointments/${eight.id}`}  data-method="delete">
+          <h5>{displayPatient(e.patient_id)}</h5>
+          <a href={`/doctors/${doctor.id}/appointments/${e.id}`}  data-method="delete">
             delete
           </a>
         </div>
       ))}
       <h4>9:00 AM</h4>
       <p>{nines.length <= 0 ? "No Appointments" : ""}</p>
-      { nines.map( (nine) => (
+      { nines.map( (n) => (
         <div>
-          <h5>{displayPatient(nine.patient_id)}</h5>
-          <a href={`/doctors/${doctor.id}/appointments/${nine.id}`}  data-method="delete">
+          <h5>{displayPatient(n.patient_id)}</h5>
+          <a href={`/doctors/${doctor.id}/appointments/${n.id}`}  data-method="delete">
             delete
           </a>
         </div>

@@ -50,3 +50,15 @@
    color: rgb(228, 224, 224);
    text-decoration: underline;
  }
+
+ button {
+   background-color: lightblue;
+   margin: 10px;
+   border-radius: 5px;
+ }
+
+ button:hover {
+   background-color: rgb(147, 182, 248);
+   cursor: pointer;
+   
+ }

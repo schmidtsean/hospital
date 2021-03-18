@@ -2,8 +2,8 @@ class AppointmentsController < ApplicationController
     before_action :set_doctor
   
     def index
-    @eights = @doctor.appointments.where(role: 'eight')
-    @nines = @doctor.appointments.where(role: 'nine')
+    @eights = @doctor.appointments.where(time: 'eight')
+    @nines = @doctor.appointments.where(time: 'nine')
     
       render component: "Appointments", props: { 
         doctor: @doctor, eights: @eights, nines: @nines, patients: Patient.all

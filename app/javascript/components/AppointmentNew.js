@@ -1,8 +1,8 @@
 import React from 'react';
 
 const AppointmentNew = ({ doctor, appointment, patients }) => {
-  const { role, errors, patient_id } = appointment;
-  const defaultRole = role ? role : "";
+  const { time, errors, patient_id } = appointment;
+  const defaultTime = time ? time : "";
   const defaultPatient = patient_id ? patient_id : "";
   // const defaultTime = time_id ? time
   return(
@@ -11,11 +11,11 @@ const AppointmentNew = ({ doctor, appointment, patients }) => {
       { errors && errors }
       <form action={`/doctors/${doctor.id}/appointments`} method="post">
      
-        <label for="role">Choose a time:</label>
-        <select 
-          name="appointment[role]" 
-          id="role" 
-          defaultValue={defaultRole}
+        <label for="time">Choose a time:</label>
+        <select class="browser-default"
+          name="appointment[time]" 
+          id="time" 
+          defaultValue={defaultTime}
         >
          <option value="eight">8:00 AM</option>
           <option value="nine">9:00 AM</option>
@@ -23,7 +23,7 @@ const AppointmentNew = ({ doctor, appointment, patients }) => {
         </select><button type="submit">Submit</button>
         <br />
         <label for="patient_id">Choose a patient:</label>
-        <select 
+        <select class="browser-default"
           name="appointment[patient_id]" 
           id="patient_id" 
           defaultValue={defaultPatient}
