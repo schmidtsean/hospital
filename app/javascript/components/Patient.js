@@ -1,6 +1,7 @@
 import React from "react";
+import Doctors from "./Doctors";
 
-const Patient = ({ patient }) => {
+const Patient = ({ patient, doctors }) => {
     const { id, first_name, last_name } = patient;
     return (
       <>
@@ -9,12 +10,20 @@ const Patient = ({ patient }) => {
           <hr />
           <a href={`/patients/${id}`}></a>
           <hr />
-          <a href={`/doctors/${id}/appointments`}>Appointments</a>
+          <h3> {first_name} {last_name}'s Doctors</h3>
+          <ul>
+            { doctors.map( (d) => (
+              <li>
+                <h6> <a href={`/doctors/${d.id}`}>{d.name}
+                  </a></h6 >
+              </li>
+            ))}
+          </ul>
           <hr />
           <a href={`/patients/${id}/edit`}>Edit</a>
          <hr />
           <a href={`/patients/${id}`} data-method="delete">
-            Patient delete
+            Delete Patient
           </a>
         </div>
       </>

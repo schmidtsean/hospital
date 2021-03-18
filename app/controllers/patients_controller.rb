@@ -7,7 +7,7 @@ class PatientsController < ApplicationController
   end
 
   def show
-    render component: "Patient", props: { patient: @patient, doctors: @doctors}
+    render component: "Patient", props: { patient: @patient, doctors: @patient.doctors}
   end
 
   def new
